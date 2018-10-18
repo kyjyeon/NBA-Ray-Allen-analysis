@@ -1,0 +1,120 @@
+'''Topic : Understanding Ray Allen's abilities through NBA overall stats and other typical player's stats 
+
+Hypothesis : 1. NBA's player stats changed due to RULE CHANGES   2.Ray Allen is one of the best SG(Shooting Guard) in NBA history
+
+Internet Data Source : Through www.basketball-reference.com, www.nba.com/analysis/rules_history.html, I copied the datas into excel 
+                       used python pandas function to bring the data and visualized it by matplotlib.pyplot package
+
+Data Analysis : Used python pandas function to bring all NBA overall data and Ray Allen's career data visualized it by matplotlib.pyplot
+                making different kinds of comparison graphs to prove my hypothesis
+'''
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+print('/t/tLearning NBA history through stats and comparing them with stats of my favorite NBA player Ray Allen')
+
+print("\n\n                                            The Chart Below is NBA average stats\n\n")
+NBA_stat = pd.read_excel('../data/NBA_stats.xlsx')
+NBA_stat_sorted = NBA_stat.sort_values(by='Season', ascending = True)
+print(NBA_stat)
+print("\n\n                                            The Chart Below is Ray Allen's NBA career stats\n\n")
+Allen_stat = pd.read_excel('../data/Ray_Allen_average.xlsx')
+print(Allen_stat)
+print('\nFirstly I will extract important columns from NBA stats\n')
+NBA_want = pd.read_excel('../data/NBA_stats.xlsx',usecols='B,F,I,J,K,L,N,O,P,X,Y,Z')
+NBA_want_sorted = NBA_want.sort_values(by='Season', ascending = True)
+print(NBA_want)
+''
+print("\n\nNBA's history can be explained by the changes of game rules\nThis enormously affects the stats of NBA games")
+print("\n\nLet's firstly take a look at the average weight of NBA players throughout the years")
+
+
+
+NBA_season = NBA_want_sorted['Season']
+NBA_weight = NBA_want_sorted['Wt']
+
+plt.figure(figsize=(40,20))
+plt.plot(NBA_season, NBA_weight, color = 'red', linestyle='dashed', marker = 'o', markerfacecolor ='blue', markersize=10, lw=4)
+plt.xlabel('Season', size =20)
+plt.ylabel('Player  Weight', size = 20)
+plt.title('NBA Player Weight Change', size=30)
+plt.xticks(rotation = 90)
+plt.grid()
+plt.show()
+
+print('Plot shows almost a steady increase of weight throughout the seasons and a slight decrease in recent years. Why?\n\n')
+print("The main reason is the rule changing of timeouts\n 1. In 1950s, chances of changing player becomes unlimited\n2000-01,The number of timeouts per team per game was changed to six from seven.\nThe number of fourth-period timeouts per team was changed to three from four.")
+print('\nPlayers needed more muscle than lung capacity')
+print('\n\n  Let\'s look at other important stat change by plot, Shooting')
+NBA_FG_percent = NBA_want_sorted['FG%']
+NBA_three_percent = NBA_want_sorted['3P%']
+
+plt.figure(figsize = (80,25))
+plt.plot(NBA_season,NBA_FG_percent, lw=10)
+plt.xlabel('Season', size =50)
+plt.ylabel('FieldGoal Percentage', size = 50)
+plt.title('NBA Player FieldGoal Percentage', size=65)
+plt.grid()
+plt.show()
+
+plt.figure(figsize=(80,25))
+plt.plot(NBA_season, NBA_three_percent, color = 'purple', linestyle='-.', marker = 'p', markerfacecolor ='white', markersize=20, lw=13)
+plt.xlabel('Season', size =50)
+plt.ylabel('3point Percentage', size = 50)
+plt.title('NBA Player 3point Percentage', size=65)
+plt.grid()
+plt.show()
+
+print('\n\nNow let\'s compare these with Ray Allen\'s sta\n Ray Allen is a SG(Shooting Guard) specialized for 3 point shooting\n\n')
+NBA_short_stat = NBA_want_sorted[18:36]
+NBA_short_stat_season = NBA_short_stat['Season']
+NBA_short_stat_three_percent = NBA_short_stat['3P%']
+NBA_short_stat_FG_percent = NBA_short_stat['FG%']
+Allen_FG_percent = Allen_stat['FG%']
+
+plt.figure(figsize = (40,18))
+plt.scatter(NBA_short_stat_season, NBA_short_stat_FG_percent, marker = 'd', s = 200, label = 'NBA')
+plt.scatter(Allen_season, Allen_FG_percent, marker = 'p', s = 200, label = 'Allen')
+plt.xlabel('Season', size = 33)
+plt.ylabel('FieldGoal Percentage', size = 30)
+plt.title('NBA and Ray Allen FieldGoal Percentage Comparison', size = 40)
+plt.grid()
+plt.legend(loc = 0, prop ={'size' : 32})
+plt.show()
+
+Allen_season = Allen_stat['Season']
+Allen_three_percent = Allen_stat['3P%']
+plt.figure(figsize=(40,18))
+plt.scatter(NBA_short_stat_season, NBA_short_stat_three_percent, color='b', label = 'NBA', marker = '>', s=200)
+plt.scatter(Allen_season, Allen_three_percent,color='g', label = 'Allen', s=200)
+plt.title('NBA and Ray Allen 3point Percentage Comparison', size = 40)
+plt.xlabel('Season', size = 33)
+plt.ylabel('3Point Percentage', size = 30)
+plt.grid()
+plt.legend(loc=0, prop = {'size':32})
+plt.show()
+
+print('\nResult shows that Ray Allen has much higher percentage of 3point making percentage than NBA average')
+print('As a matter of fact Ray Allen is the all time leader of 3 point made in the entire history\n')
+print('Let me show the top 20 ranking of NBA 3point all time leaders')
+
+NBA_three_leader = pd.read_excel('../data/NBA_3pt_leader.xlsx')
+NBA_three_leader_point = NBA_three_leader['3P']
+NBA_three_leader_name = NBA_three_leader['Player']
+NBA_three_leader_Allen = NBA_three_leader.loc[0]
+NBA_three_leader_else = NBA_three_leader[1:20]
+NBA_three_leader_else_three = NBA_three_leader_else['3P']
+NBA_three_leader_Allen_three = NBA_three_leader_Allen['3P']
+NBA_three_leader_Allen_name = NBA_three_leader_Allen['Player']
+NBA_three_leader_else_name = NBA_three_leader_else['Player']
+NBA_three_leader_else_sort = NBA_three_leader_else.sort_values(by='3P', ascending = True)
+NBA_three_leader_else_sort_three = NBA_three_leader_else_sort['3P']
+
+plt.figure(figsize=(20,12))
+plt.barh(NBA_three_leader_else_name, NBA_three_leader_else_sort_three, height = 0.6)
+plt.barh(NBA_three_leader_Allen_name, NBA_three_leader_Allen_three, height = 0.8, color = 'r', align= 'center')
+plt.title('3point All Time NBA Leaders', size = 25)
+plt.xlabel('3point Made', size = 20)
+plt.ylabel('Player', size = 20, rotation = 60)
+plt.show()
