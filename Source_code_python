@@ -12,7 +12,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
-#Seaborn is not even used. Why import seaborn?
+#Seaborn as sns not even used. WHY import?
 print('/t/tLearning NBA history through stats and comparing them with stats of my favorite NBA player Ray Allen')
 
 print("\n\n                                            The Chart Below is NBA average stats\n\n")
@@ -117,6 +117,6 @@ plt.barh(NBA_three_leader_else_name, NBA_three_leader_else_sort_three, height = 
 plt.barh(NBA_three_leader_Allen_name, NBA_three_leader_Allen_three, height = 0.8, color = 'r', align= 'center')
 plt.title('3point All Time NBA Leaders', size = 25)
 plt.xlabel('3point Made', size = 20)
-plt.ylabel('Player', size = 20, rotation = 360)
-#Weird rotation angel..... Let's just make it 360 degrees
+plt.ylabel('Player', size = 20, rotation = 180)
+#Weird rotation angel..... Let's just make it 180 degrees
 plt.show()
