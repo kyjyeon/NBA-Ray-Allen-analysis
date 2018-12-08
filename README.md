@@ -1,5 +1,5 @@
 # NBA-Ray-Allen-analysis
-Title
+<h2>Title</h2><br>
 
 Why NBA player Ray Allen is the best shooter
 
