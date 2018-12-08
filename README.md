@@ -2,6 +2,7 @@
 Description
 
 Title
+
 Why NBA player Ray Allen is the best shooter
 
 Title Selection Reason
@@ -18,8 +19,10 @@ Ray Allen is the best shooter in NBA history
 Attaining Internet Data Source
 
 Through www.basketball-reference.com web, searched the wanted player(Ray Allen), NBA overall average per season stat and brought the data into xlsx file and read it using  pandas package.
-Through http://www.espn.com/nba/story/ searched top ten shooting guards ever in NBA history and made the excel data by myself and sorted out the 
-Data Analysis / Visualization Method
+Through http://www.espn.com/nba/story/ searched top ten shooting guards ever in NBA history and made the excel data by myself and sorted out the needed values.
+
+Data Analysis / Visualization Method:
+
 
 Line plot / pandas , matplotlib.pyplot
 
@@ -30,6 +33,7 @@ Histogram plot / pandas , matplotlib.pyplot
 Heatmap / seaborn , numpy , matplotlib.pyplot
 
 Plot Animation / matplotlib.patches , matplotlib.path , matplotlib.animation , matplotlib.pyplot
+
 
 Reference material
 
