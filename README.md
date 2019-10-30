@@ -34,4 +34,4 @@ Through http://www.espn.com/nba/story/ searched top ten shooting guards ever in 
 - http://www.espn.com/nba/story/_/page/nbarankSGs/ranking-top-10-shooting-guards-ever<br><br>
 
 <h3>Selected Software</h3><br>
-Jupyter Notebook - clearly show every steps of code<br><br>
+Jupyter Notebook
