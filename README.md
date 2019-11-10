@@ -10,7 +10,7 @@
 
 <h3>Hypothesis</h3><br> Ray Allen is the best shooter in NBA history<br><br>
 
-<h3>Attaining Internet Data Source</h3><br>
+<h3>Data Source</h3><br>
 Through www.basketball-reference.com web, searched the wanted player(Ray Allen), NBA overall average per season stat and brought the data into xlsx file and read it using  ``pandas`` package.<br>
 Through http://www.espn.com/nba/story/ searched top ten shooting guards ever in NBA history and made the excel data by myself and sorted out the <br>
 
